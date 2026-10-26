@@ -1,0 +1,7 @@
+.git
+.github
+README.md
+portfolio-snippet.md
+wrangler.jsonc
+.assetsignore
+node_modules
