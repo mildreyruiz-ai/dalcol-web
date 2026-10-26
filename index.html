@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Dal Col 1924, pane e pasticceria a Bassano del Grappa. Via Angarano 33.">
+<title>Dal Col 1924</title>
+<style>html{color-scheme:light dark}body{margin:0}</style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout: cartel de panadería joven. Titulares condensados enormes en naranja de marca, con una cursiva serif para la voz de la tradición. Fotos reales del feed a sangre. */
+:root{
+  --bg:#FBFAF7; --surface:#F0EDE6; --ink:#16120F; --muted:#6A625A; --line:#DDD7CB;
+  --orange:#FF6A00; --on-orange:#16120F; --accent-text:#C24E00;
+  --display:"Anton","Arial Narrow",Impact,sans-serif;
+  --serif:"Instrument Serif",Georgia,serif;
+  --body:"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#12100E; --surface:#1E1A16; --ink:#F4EEE4; --muted:#A99F92; --line:#38312A; --accent-text:#FF8A3D; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#12100E; --surface:#1E1A16; --ink:#F4EEE4; --muted:#A99F92; --line:#38312A; --accent-text:#FF8A3D; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:400 17px/1.6 var(--body);margin:0}
+.wrap{max-width:1160px;margin:0 auto;padding-inline:max(16px,env(safe-area-inset-left,0px)) max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{margin:0;font-weight:400}
+h1,h2{font-family:var(--display);text-transform:uppercase;line-height:.95;letter-spacing:.005em;text-wrap:balance}
+h2{font-size:clamp(2.4rem,7vw,4.8rem)}
+h3{font-family:var(--body);font-weight:600;font-size:1.1rem}
+em,.serif{font-family:var(--serif);font-style:italic;text-transform:none;letter-spacing:0;font-weight:400}
+p{margin:0;max-width:60ch}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--orange);outline-offset:3px}
+img{display:block;width:100%;height:100%;object-fit:cover}
+.eyebrow{font-size:.78rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-text)}
+.draft{background:var(--ink);color:var(--bg);font-size:.85rem;text-align:center;padding:8px 16px}
+.draft a{font-weight:600}
+.btn{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:600;padding:13px 22px;background:var(--orange);color:var(--on-orange);border:2px solid var(--orange)}
+.btn.ghost{background:none;color:var(--ink);border-color:var(--ink)}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+
+/* nav */
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+nav{display:flex;flex-wrap:wrap;gap:8px 24px;align-items:center;justify-content:space-between;padding-block:12px}
+.logo{font-family:var(--display);text-transform:uppercase;font-size:1.6rem;text-decoration:none;line-height:1;letter-spacing:.01em}
+.logo span{color:var(--orange)}
+nav ul{display:flex;flex-wrap:wrap;gap:4px 22px;list-style:none;margin:0;padding:0;font-size:.95rem;align-items:center}
+nav ul a{text-decoration:none;padding:4px 0}
+nav ul a:hover{text-decoration:underline;text-decoration-color:var(--orange);text-underline-offset:5px;text-decoration-thickness:2px}
+nav .btn{padding:8px 16px;font-size:.92rem}
+
+/* hero */
+.hero{display:grid;grid-template-columns:max-content 1fr;grid-template-areas:"eyebrow eyebrow" "title img" "rest rest";gap:clamp(14px,2vw,20px) clamp(20px,4vw,56px);align-items:stretch;padding-block:clamp(24px,5vw,56px)}
+.hero-eyebrow{grid-area:eyebrow}
+.hero-rest{margin-top:clamp(12px,3vw,32px)}
+.hero-title{grid-area:title;min-width:0;display:grid;align-content:start;gap:16px}
+.hero-rest{grid-area:rest;min-width:0}
+.hero h1{font-size:clamp(3.4rem,11.5vw,8.6rem);line-height:.88}
+.hero h1 .o{color:var(--orange)}
+.hero h1 em{display:block;width:0;min-width:100%;font-size:.5em;line-height:1;margin-top:.12em;color:var(--ink);text-transform:none}
+.hero p{font-size:1.15rem;color:var(--muted)}
+.hero-img{grid-area:img;--f:clamp(3.4rem,11.5vw,8.6rem);width:calc(var(--f)*1.94);height:calc(var(--f)*1.94);align-self:start;justify-self:start;transform:translateY(calc(var(--f)*.9));position:relative;min-width:0;overflow:hidden;background:#FBFAF7}
+.hero-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+.facts{display:flex;flex-wrap:wrap;gap:6px 22px;margin-top:18px;font-size:.9rem;color:var(--muted)}
+.facts b{color:var(--ink);font-weight:600}
+
+/* tradizione */
+.trad{background:var(--orange);color:var(--on-orange);padding-block:clamp(48px,8vw,104px)}
+.trad .eyebrow{color:var(--on-orange)}
+.trad-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,72px);align-items:center}
+.trad h2{font-size:clamp(3rem,9vw,7rem);margin-block:14px 24px}
+.trad h2 em{font-size:.9em}
+.trad p{font-size:1.15rem;max-width:46ch}
+.trad p+p{margin-top:14px}
+.trad-img{aspect-ratio:1/1;overflow:hidden;min-width:0}
+.timeline{list-style:none;margin:36px 0 0;padding:0;border-top:2px solid var(--on-orange)}
+.timeline li{display:grid;grid-template-columns:5.5rem 1fr;gap:14px;padding-block:12px;border-bottom:1px solid color-mix(in srgb,var(--on-orange) 40%,transparent);font-size:1rem}
+.timeline time{font-family:var(--display);font-size:1.5rem;line-height:1.2}
+.tbd{font-style:italic;opacity:.8}
+
+section.pad{padding-block:clamp(48px,8vw,104px)}
+.sec-head{display:grid;gap:14px;margin-bottom:clamp(28px,4vw,48px)}
+.sec-head p{color:var(--muted)}
+
+/* pane */
+.bread{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}
+.bread figure{margin:0;overflow:hidden;background:var(--surface);min-width:0}
+.bread .a{grid-column:span 7;aspect-ratio:4/3}
+.bread .b{grid-column:span 5;aspect-ratio:1/1}
+.bread .c,.bread .d,.bread .e{grid-column:span 4;aspect-ratio:1/1}
+.bread-copy{margin-top:28px;display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.bread-copy div{border-top:2px solid var(--ink);padding-top:12px;display:grid;gap:6px;align-content:start}
+.bread-copy p{color:var(--muted);font-size:.97rem}
+
+/* dolci */
+.sweet{background:var(--surface)}
+.sweet-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.sweet-grid figure{margin:0;display:grid;gap:8px;min-width:0}
+.sweet-grid .ph{aspect-ratio:1/1;overflow:hidden;background:var(--bg)}
+.sweet-grid figcaption{font-size:.9rem;color:var(--muted)}
+.sweet-grid .wide{grid-column:span 2}
+.sweet-grid .wide .ph{aspect-ratio:2/1}
+
+/* carta */
+.menu-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,64px);align-items:start}
+.menu-img{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.menu-img figure{margin:0;aspect-ratio:3/4;overflow:hidden;background:var(--surface);min-width:0}
+.menu-img figure:nth-child(2){margin-top:36px}
+table{width:100%;border-collapse:collapse;font-size:1rem}
+th,td{text-align:left;padding:14px 8px 14px 0;border-top:1px solid var(--line);vertical-align:top}
+th{font-weight:600;white-space:nowrap}
+td.p{white-space:nowrap;text-align:right;padding-right:0;font-variant-numeric:tabular-nums;font-weight:600}
+td span{display:block;color:var(--muted);font-size:.92rem}
+.note-small{font-size:.85rem;color:var(--muted);margin-top:14px}
+
+/* stagione */
+.season{background:var(--ink);color:var(--bg)}
+.season .eyebrow{color:var(--orange)}
+.season .sec-head p{color:color-mix(in srgb,var(--bg) 70%,transparent)}
+.season-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(24px,5vw,64px);align-items:center}
+.season-img{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.season-img figure{margin:0;aspect-ratio:3/4;overflow:hidden;min-width:0}
+.season-img figure:first-child{grid-row:span 1}
+.season ul{list-style:none;margin:0;padding:0;display:grid;gap:0}
+.season li{padding-block:14px;border-top:1px solid color-mix(in srgb,var(--bg) 25%,transparent);display:grid;gap:2px}
+.season li b{font-weight:600}
+.season li span{color:color-mix(in srgb,var(--bg) 68%,transparent);font-size:.95rem}
+
+/* locale + shop */
+.place{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
+.place figure{margin:0;overflow:hidden;background:var(--surface);min-width:0}
+.place .f1{grid-column:span 3;aspect-ratio:4/3}
+.place .f2{grid-column:span 3;aspect-ratio:4/3}
+.place .f3,.place .f4,.place .f5{grid-column:span 2;aspect-ratio:3/4}
+.shop{display:grid;grid-template-columns:1fr 1.2fr;gap:clamp(24px,5vw,64px);align-items:center;margin-top:clamp(56px,8vw,96px)}
+.shop-img{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.shop-img figure{margin:0;aspect-ratio:3/4;overflow:hidden;background:var(--surface);min-width:0}
+.shop h2{font-size:clamp(2.2rem,5.5vw,3.8rem);margin-block:12px 16px}
+
+/* visit */
+.visit{background:var(--surface)}
+.visit-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,64px)}
+dl{margin:24px 0 0;display:grid}
+dl div{display:grid;grid-template-columns:7.5rem 1fr;gap:12px;padding-block:12px;border-top:1px solid var(--line)}
+dt{font-size:.78rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);padding-top:3px}
+dd{margin:0}
+.todo{background:color-mix(in srgb,var(--orange) 22%,transparent);padding:1px 6px;font-size:.88em}
+.visit-img{aspect-ratio:4/5;overflow:hidden;min-width:0}
+.visit h2{margin-top:12px}
+
+.notes{border:2px dashed var(--orange);padding:24px;display:grid;gap:12px;margin-block:clamp(32px,6vw,64px)}
+.notes ul{margin:0;padding-left:1.1em;display:grid;gap:6px}
+.notes li{max-width:72ch}
+footer{border-top:1px solid var(--line);padding-block:28px 40px;font-size:.9rem;color:var(--muted);display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between}
+
+@media(max-width:820px){
+  .hero{grid-template-columns:1fr;grid-template-areas:"eyebrow" "title" "img" "rest"}
+  .trad-grid,.menu-grid,.season-grid,.shop,.visit-grid{grid-template-columns:1fr}
+  .hero-img{transform:none;aspect-ratio:1/1;width:100%;height:auto;justify-self:stretch}
+  .bread-copy{grid-template-columns:1fr}
+  .sweet-grid{grid-template-columns:1fr 1fr}
+  .bread .a,.bread .b{grid-column:span 12}
+  .bread .c,.bread .d,.bread .e{grid-column:span 6}
+  .bread .e{grid-column:span 12;aspect-ratio:16/9}
+  .menu-img figure:nth-child(2){margin-top:0}
+  .place .f1,.place .f2{grid-column:span 6}
+  dl div{grid-template-columns:1fr;gap:2px}
+  nav ul li.hide-s{display:none}
+}
+@media (prefers-reduced-motion:no-preference){
+  .btn{transition:transform .15s ease}.btn:hover{transform:translateY(-2px)}
+}
+</style>
+
+
+<header class="top">
+  <div class="wrap">
+    <nav aria-label="Principale">
+      <a class="logo" href="#top">Dal Col <span>1924</span></a>
+      <ul>
+        <li class="hide-s"><a href="#tradizione">Tradizione</a></li>
+        <li class="hide-s"><a href="#pane">Pane</a></li>
+        <li class="hide-s"><a href="#carta">Carta</a></li>
+        <li class="hide-s"><a href="#stagione">Stagione</a></li>
+        <li><a class="btn" href="https://www.google.com/maps/search/?api=1&query=Dal+Col+1924+Via+Angarano+33+36061+Bassano+del+Grappa" rel="noopener">Come arrivare</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+<div class="wrap hero">
+    <p class="eyebrow hero-eyebrow">Pane · Pasticceria · Bassano del Grappa</p>
+    <div class="hero-title">
+      <h1>Dal <span class="o">1924</span><em>cento anni di pane, ancora caldo.</em></h1>
+    </div>
+    <div class="hero-rest">
+      <p>Un nome che a Bassano ha un secolo di storia. Oggi lo scriviamo in modo nuovo: lievito madre, brioche del giorno, caffè e matcha, sempre in Via Angarano.</p>
+      <div class="cta">
+        <a class="btn" href="https://www.google.com/maps/search/?api=1&query=Dal+Col+1924+Via+Angarano+33+36061+Bassano+del+Grappa" rel="noopener">Apri su Google Maps</a>
+        <a class="btn ghost" href="#carta">Guarda la carta</a>
+      </div>
+      <div class="facts"><span><b>Via Angarano 33</b>, Bassano del Grappa</span><span><b>Tutti i giorni</b> 7:30–19:30</span></div>
+    </div>
+  <div class="hero-img"><img src="images/dalcol-01.webp" alt="Poster Dal Col: DAL col, pane, pasticceria, un bicchiere di matcha ghiacciato, due dolcetti e 1924" width="1318" height="1187"></div>
+</div>
+
+<section class="trad" id="tradizione">
+  <div class="wrap trad-grid">
+    <div>
+      <p class="eyebrow">La nostra tradizione</p>
+      <h2>Un secolo di <em>pane</em></h2>
+      <p>Dal Col è un nome di Bassano dal 1924. Lo portiamo sul banco ogni mattina, insieme a ciò che il pane ci ha insegnato: pazienza, farine buone e un impasto che non ha fretta.</p>
+      <p>La tradizione per noi non è un museo. È la pagnotta di lievito madre che esce dal forno, e la gente che torna a prenderla.</p>
+      <ul class="timeline">
+        <li><time>1924</time><span>Nasce Dal Col a Bassano del Grappa.</span></li>
+        <li><time>2025</time><span>Il nuovo Dal Col apre in Via Angarano 33.</span></li>
+      </ul>
+    </div>
+    <div class="trad-img"><img src="images/dalcol-02.jpg" alt="Pagnotte di lievito madre su mensole bianche" width="1000" height="1000" loading="lazy"></div>
+  </div>
+</section>
+
+<section class="pad" id="pane">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Dal forno</p>
+      <h2>Il pane, <em>prima di tutto</em></h2>
+    </div>
+    <div class="bread">
+      <figure class="a"><img src="images/dalcol-03.jpg" alt="Pani appoggiati su mensole a parete" loading="lazy" width="1100" height="1100"></figure>
+      <figure class="b"><img src="images/dalcol-04.jpg" alt="Impasto con semi di sesamo nero nel cestino di lievitazione" loading="lazy" width="900" height="900"></figure>
+      <figure class="c"><img src="images/dalcol-05.jpg" alt="Cornetti in forno" loading="lazy" width="900" height="900"></figure>
+      <figure class="d"><img src="images/dalcol-06.jpg" alt="Focaccia al rosmarino" loading="lazy" width="900" height="900"></figure>
+      <figure class="e"><img src="images/dalcol-07.jpg" alt="Panettone aperto a metà" loading="lazy" width="900" height="900"></figure>
+    </div>
+    <div class="bread-copy">
+      <div><h3>Lievito madre</h3><p>Le pagnotte nascono da un impasto lento, che lievita con calma.</p></div>
+      <div><h3>Brioche del giorno</h3><p>Brioche artigianali fresche ogni mattina, anche nella versione XL.</p></div>
+      <div><h3>Focacce e lievitati</h3><p>Focaccia, rotoli alla cannella e lievitati delle feste, secondo il giorno.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="pad sweet" id="dolci">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Pasticceria</p>
+      <h2>Dolci <em>fatti in casa</em></h2>
+      <p>Torte di frutta, lievitati e monoporzioni. Le tartine e le torte si ordinano anche in negozio.</p>
+    </div>
+    <div class="sweet-grid">
+      <figure class="wide"><div class="ph"><img src="images/dalcol-08.jpg" alt="Crostata di pesche e fichi" loading="lazy" width="1100" height="1100"></div><figcaption>Crostata di pesche e fichi</figcaption></figure>
+      <figure><div class="ph"><img src="images/dalcol-09.jpg" alt="Crostata di frutta fresca" loading="lazy" width="800" height="800"></div><figcaption>Crostata di frutta</figcaption></figure>
+      <figure><div class="ph"><img src="images/dalcol-10.jpg" alt="Cruffin al cacao" loading="lazy" width="800" height="800"></div><figcaption>Lievitato al cacao</figcaption></figure>
+      <figure><div class="ph"><img src="images/dalcol-11.jpg" alt="Bignè sfogliati con crema" loading="lazy" width="800" height="800"></div><figcaption>Sfogliati con crema</figcaption></figure>
+      <figure><div class="ph"><img src="images/dalcol-12.jpg" alt="Sfogliatina ai frutti di bosco" loading="lazy" width="800" height="800"></div><figcaption>Frutti di bosco</figcaption></figure>
+      <figure><div class="ph"><img src="images/dalcol-13.jpg" alt="Sfogliatina alle fragole" loading="lazy" width="800" height="800"></div><figcaption>Fragole</figcaption></figure>
+      <figure><div class="ph"><img src="images/dalcol-14.jpg" alt="Dolce rosa ai lamponi" loading="lazy" width="800" height="800"></div><figcaption>Lampone</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="pad" id="carta">
+  <div class="wrap menu-grid">
+    <div>
+      <div class="sec-head">
+        <p class="eyebrow">Caffè, matcha e panini</p>
+        <h2>La <em>carta</em></h2>
+      </div>
+      <table>
+        <tbody>
+          <tr><th>Caffè</th><td><span>Espresso, macchiato, americano, cappuccino, flat white, batch brew</span></td><td class="p">1,40–3,70</td></tr>
+          <tr><th>Matcha</th><td><span>Matcha latte, anche con mandorla, cocco, chai, strawberry dust, caramello</span></td><td class="p">4,20–4,50</td></tr>
+          <tr><th>Iced</th><td><span>Iced matcha cocco, frappuccino, iced caramel latte</span></td><td class="p">5,20</td></tr>
+          <tr><th>Bibite</th><td><span>Limonate Calypso, kombucha zucchina e coriandolo, cola, aranciata, succhi, tè freddi</span></td><td class="p">2,70–6,20</td></tr>
+          <tr><th>Panini</th><td><span>"Clean": stracciatella, crema di pistacchio, pomodoro secco, basilico</span></td><td class="p">9,00</td></tr>
+        </tbody>
+      </table>
+      <p class="note-small">Prezzi in euro, indicativi. Chiedi in negozio la lista completa di pane e dolci e gli allergeni.</p>
+    </div>
+    <div class="menu-img">
+      <figure><img src="images/dalcol-15.jpg" alt="Matcha latte ghiacciato" loading="lazy" width="800" height="1000"></figure>
+      <figure><img src="images/dalcol-16.jpg" alt="Due caffè freddi con crema" loading="lazy" width="800" height="1000"></figure>
+    </div>
+  </div>
+</section>
+
+<section class="pad season" id="stagione">
+  <div class="wrap season-grid">
+    <div>
+      <div class="sec-head">
+        <p class="eyebrow">Novità di stagione</p>
+        <h2>Autunno <em>da Dal Col</em></h2>
+        <p>Ogni stagione cambia la vetrina. Ecco cosa trovi in negozio a ottobre e novembre.</p>
+      </div>
+      <ul>
+        <li><b>Pumpkin Spice Latte e Apple Pie Latte</b><span>Ottobre e novembre</span></li>
+        <li><b>Biscoff Lotus Cinnamon Rolls</b><span>Le domeniche di ottobre</span></li>
+        <li><b>Danimisù</b><span>Nei fine settimana</span></li>
+        <li><b>Brioche artigianali e pancake freschi</b><span>Ogni giorno, finché ce ne sono</span></li>
+        <li><b>Torte su ordinazione</b><span>In negozio</span></li>
+      </ul>
+    </div>
+    <div class="season-img">
+      <figure><img src="images/dalcol-17.jpg" alt="Pumpkin Spice Latte con zucca e cannella" loading="lazy" width="900" height="1200"></figure>
+      <figure><img src="images/dalcol-18.jpg" alt="Cinnamon rolls con biscotti Biscoff" loading="lazy" width="900" height="1200"></figure>
+    </div>
+  </div>
+</section>
+
+<section class="pad" id="locale">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Il locale</p>
+      <h2>Muri di calce, <em>banco di pane</em></h2>
+    </div>
+    <div class="place">
+      <figure class="f1"><img src="images/dalcol-19.jpg" alt="Il dehors con ombrelloni e fiori in Via Angarano" loading="lazy" width="1100" height="825"></figure>
+      <figure class="f2"><img src="images/dalcol-20.jpg" alt="Interno del locale con il banco e la vetrina" loading="lazy" width="1100" height="825"></figure>
+      <figure class="f3"><img src="images/dalcol-21.jpg" alt="Vetrina con mensole e prodotti" loading="lazy" width="700" height="933"></figure>
+      <figure class="f4"><img src="images/dalcol-22.jpg" alt="Fiori e caffè sul tavolino" loading="lazy" width="700" height="933"></figure>
+      <figure class="f5"><img src="images/dalcol-23.jpg" alt="Pumpkin Spice Latte da asporto" loading="lazy" width="700" height="933"></figure>
+    </div>
+
+    <div class="shop">
+      <div>
+        <p class="eyebrow">Shop online</p>
+        <h2>Porta a casa <em>Dal Col</em></h2>
+        <p>Candele profumate al matcha latte, cold brew, vaniglia e cappuccino, e magliette e longsleeve nei colori della casa. Sono in vendita in negozio e online.</p>
+      </div>
+      <div class="shop-img">
+        <figure><img src="images/dalcol-24.jpg" alt="Candele profumate Iced Latte e Candle" loading="lazy" width="700" height="933"></figure>
+        <figure><img src="images/dalcol-25.jpg" alt="Felpa bianca Dal Col su una sedia di pietra" loading="lazy" width="700" height="933"></figure>
+        <figure><img src="images/dalcol-26.jpg" alt="Sacchetto argentato Dal Col" loading="lazy" width="700" height="933"></figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pad visit" id="vieni">
+  <div class="wrap visit-grid">
+    <div>
+      <p class="eyebrow">Vieni a trovarci</p>
+      <h2>Via Angarano, <em>numero 33</em></h2>
+      <dl>
+        <div><dt>Indirizzo</dt><dd>Via Angarano 33, 36061 Bassano del Grappa (VI)</dd></div>
+        <div><dt>Orari</dt><dd>Tutti i giorni 7:30–19:30</dd></div>
+        <div><dt>Ordina</dt><dd><a href="https://glovoapp.com/it/en/bassano-del-grappa/dal-col-1924-bdg/" rel="noopener">Glovo</a> · <a href="https://deliveroo.it/it/menu/bassano-del-grappa/bassano-del-grappa/dal-col-1924-via-angarano-33" rel="noopener">Deliveroo</a> · <a href="https://www.toogoodtogo.com/it/find/bassanodelgrappa/dalcol1924/bakedgoods/surprisebagmedia-117408688936786816" rel="noopener">Too Good To Go</a></dd></div>
+        <div><dt>Instagram</dt><dd><a href="https://www.instagram.com/dalcol1924/" rel="noopener">@dalcol1924</a></dd></div>
+      </dl>
+      <div class="cta">
+        <a class="btn" href="https://www.google.com/maps/search/?api=1&query=Dal+Col+1924+Via+Angarano+33+36061+Bassano+del+Grappa" rel="noopener">Apri su Google Maps</a>
+        <a class="btn ghost" href="https://www.google.com/maps/dir/?api=1&destination=Dal+Col+1924+Via+Angarano+33+36061+Bassano+del+Grappa" rel="noopener">Indicazioni stradali</a>
+      </div>
+    </div>
+    <div class="visit-img"><img src="images/dalcol-27.jpg" alt="Insegna luminosa Dal Col all'ingresso" loading="lazy" width="900" height="1125"></div>
+  </div>
+</section>
+</main>
+
+<div class="wrap">
+  <footer>
+    <span>© Dal Col 1924 · Via Angarano 33, Bassano del Grappa</span>
+    <span>Pane · Pasticceria dal 1924</span>
+  </footer>
+</div>
+</html>
